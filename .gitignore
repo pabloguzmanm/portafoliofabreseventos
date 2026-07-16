@@ -1,0 +1,9 @@
+# Ignore local video assets and prevent large media from being pushed to GitHub
+videos/
+*.mp4
+*.mov
+*.avi
+*.mkv
+# Ignore system files
+.DS_Store
+Thumbs.db

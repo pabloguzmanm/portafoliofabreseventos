@@ -1,0 +1,789 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FABRES EVENTOS - Productora de Eventos</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <style>
+      /* CSS VARIABLES & RESET */
+      :root {
+        --bg-color: #0b0c10;
+        --surface-color: #1f2833;
+        --accent-color: #66fcf1;
+        --accent-dark: #45a29e;
+        --text-light: #ffffff;
+        --text-muted: #c5c6c7;
+        --font-main: "Montserrat", sans-serif;
+        --font-body: "Open Sans", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-light);
+        font-family: var(--font-body);
+        overflow-x: hidden;
+      }
+
+      /* TYPOGRAPHY */
+      h1,
+      h2,
+      h3,
+      .nav-logo {
+        font-family: var(--font-main);
+        text-transform: uppercase;
+      }
+
+      .neon-text {
+        color: var(--accent-color);
+        text-shadow: 0 0 10px rgba(102, 252, 241, 0.4);
+      }
+
+      .section-title {
+        font-size: 48px;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 60px;
+        letter-spacing: 2px;
+      }
+
+      /* NAVIGATION */
+      nav {
+        background: rgba(11, 12, 16, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(102, 252, 241, 0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        padding: 20px 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 24px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        color: var(--text-light);
+        text-decoration: none;
+      }
+
+      .nav-logo img {
+        display: block;
+        height: 64px;
+        width: auto;
+      }
+
+      .footer-logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .footer-logo img {
+        display: block;
+        height: 40px;
+        width: auto;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 30px;
+      }
+
+      .nav-links a {
+        color: var(--text-muted);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent-color);
+      }
+
+      /* HERO SECTION */
+      .hero {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+        position: relative;
+        background: radial-gradient(
+          circle at center,
+          rgba(31, 40, 51, 0.8) 0%,
+          var(--bg-color) 100%
+        );
+        margin-top: 60px; /* Offset for fixed nav */
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=80")
+          center/cover;
+        opacity: 0.62;
+        z-index: -1;
+      }
+
+      .hero h1 {
+        font-size: clamp(50px, 8vw, 100px);
+        font-weight: 800;
+        letter-spacing: 5px;
+        margin-bottom: 20px;
+      }
+
+      .hero p {
+        font-size: 24px;
+        color: var(--text-muted);
+        max-width: 800px;
+        margin-bottom: 40px;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 15px 40px;
+        border: 2px solid var(--accent-color);
+        background: transparent;
+        color: var(--accent-color);
+        font-family: var(--font-main);
+        font-weight: 700;
+        font-size: 16px;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background: var(--accent-color);
+        color: var(--bg-color);
+        box-shadow: 0 0 20px rgba(102, 252, 241, 0.4);
+      }
+
+      /* COMMON SECTION STYLES */
+      .section {
+        padding: 100px 5%;
+      }
+
+      /* VIDEO SHOWCASE SECTION */
+      .video-section {
+        background-color: var(--surface-color);
+      }
+
+      .video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .video-card {
+        background: var(--bg-color);
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid rgba(102, 252, 241, 0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s;
+      }
+
+      .video-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(102, 252, 241, 0.3);
+      }
+
+      .video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        height: 0;
+        overflow: hidden;
+        background-color: #000;
+      }
+
+      .video-wrapper iframe,
+      .video-wrapper video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      .video-info {
+        padding: 25px;
+      }
+
+      .video-info h3 {
+        font-size: 22px;
+        margin-bottom: 10px;
+        color: var(--accent-color);
+      }
+
+      .video-info p {
+        color: var(--text-muted);
+        font-size: 15px;
+      }
+
+      /* MASSIVE GALLERY SECTION (MASONRY GRID) */
+      .gallery-section {
+        background-color: var(--bg-color);
+      }
+
+      .gallery-filters {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 50px;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        background: transparent;
+        border: 1px solid var(--text-muted);
+        color: var(--text-muted);
+        padding: 10px 25px;
+        border-radius: 30px;
+        font-family: var(--font-main);
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .filter-btn.active,
+      .filter-btn:hover {
+        border-color: var(--accent-color);
+        color: var(--accent-color);
+      }
+
+      .masonry-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        max-width: 1600px;
+        margin: 0 auto;
+      }
+
+      @media (max-width: 900px) {
+        .masonry-grid {
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+      }
+      @media (max-width: 600px) {
+        .masonry-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .gallery-item {
+        margin-bottom: 0;
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+        border: 1px solid rgba(102, 252, 241, 0.1);
+        aspect-ratio: 4 / 3;
+        min-height: 240px;
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 8px;
+        transition:
+          transform 0.5s ease,
+          filter 0.5s ease;
+      }
+
+      .gallery-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(11, 12, 16, 0.8);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.05);
+        filter: blur(2px);
+      }
+
+      .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+      }
+
+      .gallery-overlay i {
+        color: var(--accent-color);
+        font-size: 32px;
+        margin-bottom: 10px;
+      }
+
+      .gallery-overlay span {
+        font-family: var(--font-main);
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+
+      /* LIGHTBOX (Fullscreen Image Viewer) */
+      .lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 2000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+
+      .lightbox.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .lightbox img {
+        max-width: 90%;
+        max-height: 90vh;
+        object-fit: contain;
+        border-radius: 4px;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        color: white;
+        font-size: 40px;
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+
+      .lightbox-close:hover {
+        color: var(--accent-color);
+      }
+
+      /* CONTACT SECTION */
+      .contact-section {
+        background-color: var(--surface-color);
+        text-align: center;
+        border-top: 1px solid rgba(102, 252, 241, 0.1);
+      }
+
+      .contact-grid {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+        margin-top: 40px;
+      }
+
+      .contact-card {
+        background: var(--bg-color);
+        padding: 40px;
+        border-radius: 8px;
+        min-width: 250px;
+        border: 1px solid rgba(102, 252, 241, 0.1);
+      }
+
+      .contact-card i {
+        font-size: 40px;
+        color: var(--accent-color);
+        margin-bottom: 20px;
+      }
+
+      .contact-card h4 {
+        margin-bottom: 10px;
+        font-family: var(--font-main);
+      }
+      .contact-card p {
+        color: var(--text-muted);
+      }
+
+      footer {
+        background: #000;
+        padding: 20px;
+        text-align: center;
+        font-size: 14px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <a href="#" class="nav-logo">
+        <img src="logo.png" alt="NEXUS EVENTOS logo" />
+      </a>
+      <div class="nav-links">
+        <a href="#hero">Inicio</a>
+        <a href="#videos">Showreels</a>
+        <a href="#galeria">Portafolio</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+      <h1>FABRES <span class="neon-text">EVENTOS</span></h1>
+      <p>Producción de Eventos & Diseño de Experiencias.</p>
+      <a href="#galeria" class="btn">Ver Nuestro Trabajo</a>
+    </section>
+
+    <!-- Video Section: AQUÍ ESTÁN TUS 10 VIDEOS LOCALES -->
+    <section id="videos" class="section video-section">
+      <h2 class="section-title">
+        Nuestros <span class="neon-text">Showreels</span>
+      </h2>
+      <div class="video-grid">
+        <!-- Video 1 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <video controls controlsList="nodownload">
+              <source src="videos/video1.mp4" type="video/mp4" />
+              Tu navegador no soporta el formato de video.
+            </video>
+          </div>
+          <div class="video-info">
+            <h3>Evento Destacado 1</h3>
+            <p>Descripción del primer evento corporativo o festival.</p>
+          </div>
+        </div>
+
+        <!-- Video 2 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <video controls controlsList="nodownload">
+              <source src="videos/video2.mp4" type="video/mp4" />
+              Tu navegador no soporta el formato de video.
+            </video>
+          </div>
+          <div class="video-info">
+            <h3>Evento Destacado 2</h3>
+            <p>Descripción del segundo evento.</p>
+          </div>
+        </div>
+
+        <!-- Video 3 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <video controls controlsList="nodownload">
+              <source src="videos/video3.mp4" type="video/mp4" />
+              Tu navegador no soporta el formato de video.
+            </video>
+          </div>
+          <div class="video-info">
+            <h3>Evento Destacado 3</h3>
+            <p>Descripción del tercer evento.</p>
+          </div>
+        </div>
+
+        <!-- Video 4 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <video controls controlsList="nodownload">
+              <source src="videos/video4.mp4" type="video/mp4" />
+              Tu navegador no soporta el formato de video.
+            </video>
+          </div>
+          <div class="video-info">
+            <h3>Evento Destacado 4</h3>
+            <p>Descripción del cuarto evento.</p>
+          </div>
+        </div>
+
+        <!-- Video 5 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <video controls controlsList="nodownload">
+              <source src="videos/video5.mp4" type="video/mp4" />
+              Tu navegador no soporta el formato de video.
+            </video>
+          </div>
+          <div class="video-info">
+            <h3>Evento Destacado 5</h3>
+            <p>Descripción del quinto evento.</p>
+          </div>
+        </div>
+
+        <!-- Video 6 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <video controls controlsList="nodownload">
+              <source src="videos/video6.mp4" type="video/mp4" />
+              Tu navegador no soporta el formato de video.
+            </video>
+          </div>
+          <div class="video-info">
+            <h3>Evento Destacado 6</h3>
+            <p>Descripción del sexto evento.</p>
+          </div>
+        </div>
+
+        <!-- Video 7 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <video controls controlsList="nodownload">
+              <source src="videos/video7.mp4" type="video/mp4" />
+              Tu navegador no soporta el formato de video.
+            </video>
+          </div>
+          <div class="video-info">
+            <h3>Evento Destacado 7</h3>
+            <p>Descripción del séptimo evento.</p>
+          </div>
+        </div>
+
+        <!-- Video 8 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <video controls controlsList="nodownload">
+              <source src="videos/video8.mp4" type="video/mp4" />
+              Tu navegador no soporta el formato de video.
+            </video>
+          </div>
+          <div class="video-info">
+            <h3>Evento Destacado 8</h3>
+            <p>Descripción del octavo evento.</p>
+          </div>
+        </div>
+
+        <!-- Video 9 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <video controls controlsList="nodownload">
+              <source src="videos/video9.mp4" type="video/mp4" />
+              Tu navegador no soporta el formato de video.
+            </video>
+          </div>
+          <div class="video-info">
+            <h3>Evento Destacado 9</h3>
+            <p>Descripción del noveno evento.</p>
+          </div>
+        </div>
+
+        <!-- Video 10 -->
+        <div class="video-card">
+          <div class="video-wrapper">
+            <video controls controlsList="nodownload">
+              <source src="videos/video10.mp4" type="video/mp4" />
+              Tu navegador no soporta el formato de video.
+            </video>
+          </div>
+          <div class="video-info">
+            <h3>Evento Destacado 10</h3>
+            <p>Descripción del décimo evento.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Massive Image Gallery Section -->
+    <section id="galeria" class="section gallery-section">
+      <h2 class="section-title">
+        Portafolio <span class="neon-text">Visual</span>
+      </h2>
+
+      <!-- Filtros -->
+      <div class="gallery-filters">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="corporativo">
+          Corporativos
+        </button>
+        <button class="filter-btn" data-filter="masivo">
+          Conciertos & Festivales
+        </button>
+        <button class="filter-btn" data-filter="social">
+          Galas & Sociales
+        </button>
+      </div>
+
+      <!-- Grilla Masonry -->
+      <div class="masonry-grid" id="gallery-container">
+        <!-- Las 70 imágenes se generarán automáticamente aquí con Javascript -->
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="section contact-section">
+      <h2 class="section-title">
+        Hablemos de tu <span class="neon-text">Próximo Evento</span>
+      </h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <i class="fa-solid fa-envelope"></i>
+          <h4>Email</h4>
+          <p>contacto@fabreseventos.cl</p>
+        </div>
+        <div class="contact-card">
+          <i class="fa-solid fa-phone"></i>
+          <h4>Teléfono</h4>
+          <p>+56 9 1234 5678</p>
+        </div>
+        <div class="contact-card">
+          <i class="fa-solid fa-location-dot"></i>
+          <h4>Oficina Base</h4>
+          <p>Santiago, Chile (Cobertura Nacional)</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-logo">
+        <img src="logo.png" alt="FABRES EVENTOS logo" />
+        <p>&copy; 2026 FABRES EVENTOS. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+      <span class="lightbox-close" id="lightbox-close">&times;</span>
+      <img src="" alt="Fullscreen Image" id="lightbox-img" />
+    </div>
+
+    <script>
+      // --- 1. GENERADOR DE 70 IMÁGENES LOCALES ---
+      const galleryContainer = document.getElementById("gallery-container");
+      const categories = ["corporativo", "masivo", "social"];
+
+      // Este ciclo va del 1 al 30 y busca las imágenes en tu carpeta "imagenes"
+      for (let i = 1; i <= 30; i++) {
+        const category = categories[i % 3]; // Asigna categorías al azar para los filtros
+
+        // RUTA DE TU IMAGEN LOCAL (Ej: imagenes/1.jpg)
+        const imgSrc = `imagenes/${i}.jpg`;
+
+        // "onerror" evita que salga un ícono roto si aún no has puesto tus fotos.
+        // Mientras no tengas las fotos locales, mostrará un cuadro gris elegante.
+        const fallbackImg = `https://via.placeholder.com/600x400/1F2833/66FCF1?text=Foto+${i}+-+Agrega+tu+imagen+${i}.jpg`;
+
+        const itemHtml = `
+            <div class="gallery-item ${category}" onclick="openLightbox('${imgSrc}')">
+                <img src="${imgSrc}" alt="Evento ${i}" loading="lazy" onerror="this.onerror=null; this.src='${fallbackImg}';">
+                <div class="gallery-overlay">
+                    <i class="fa-solid fa-expand"></i>
+                    <span>Ver Detalles</span>
+                </div>
+            </div>
+        `;
+        galleryContainer.innerHTML += itemHtml;
+      }
+
+      // --- 2. LÓGICA DE FILTRADO DE GALERÍA ---
+      const filterBtns = document.querySelectorAll(".filter-btn");
+
+      filterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          filterBtns.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          const filterValue = btn.getAttribute("data-filter");
+          const items = document.querySelectorAll(".gallery-item");
+
+          items.forEach((item) => {
+            if (filterValue === "all" || item.classList.contains(filterValue)) {
+              item.style.display = "block";
+            } else {
+              item.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // --- 3. LÓGICA DEL LIGHTBOX (Pantalla Completa) ---
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      const closeBtn = document.getElementById("lightbox-close");
+
+      // Aquí también agregamos la prevención de error por si hacen clic en el placeholder
+      function openLightbox(imgSrc) {
+        // Creamos una imagen temporal para comprobar si existe la local
+        let img = new Image();
+        img.src = imgSrc;
+        img.onload = function () {
+          lightboxImg.src = imgSrc; // Si existe, la muestra
+        };
+        img.onerror = function () {
+          // Si no existe, muestra el cuadro gris en grande
+          lightboxImg.src = `https://via.placeholder.com/1200x800/1F2833/66FCF1?text=Imagen+No+Encontrada`;
+        };
+
+        lightbox.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      closeBtn.addEventListener("click", () => {
+        lightbox.classList.remove("active");
+        document.body.style.overflow = "auto";
+      });
+
+      lightbox.addEventListener("click", (e) => {
+        if (e.target === lightbox) {
+          lightbox.classList.remove("active");
+          document.body.style.overflow = "auto";
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && lightbox.classList.contains("active")) {
+          lightbox.classList.remove("active");
+          document.body.style.overflow = "auto";
+        }
+      });
+    </script>
+  </body>
+</html>
