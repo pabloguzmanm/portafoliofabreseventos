@@ -536,7 +536,7 @@
     <!-- Navigation -->
     <nav>
       <a href="#" class="nav-logo">
-        <img src="logo.png" alt="NEXUS EVENTOS logo" />
+        <img src="logo.png" alt="FABRES EVENTOS logo" />
       </a>
       <div class="nav-links">
         <a href="#hero">Inicio</a>
@@ -558,20 +558,6 @@
         Portafolio <span class="neon-text">Visual</span>
       </h2>
 
-      <!-- Filtros -->
-      <div class="gallery-filters">
-        <button class="filter-btn active" data-filter="all">Todos</button>
-        <button class="filter-btn" data-filter="corporativo">
-          Corporativos
-        </button>
-        <button class="filter-btn" data-filter="masivo">
-          Conciertos & Festivales
-        </button>
-        <button class="filter-btn" data-filter="social">
-          Galas & Sociales
-        </button>
-      </div>
-
       <!-- Grilla Masonry -->
       <div class="masonry-grid" id="gallery-container">
         <!-- Las 70 imágenes se generarán automáticamente aquí con Javascript -->
@@ -587,17 +573,19 @@
         <div class="contact-card">
           <i class="fa-solid fa-envelope"></i>
           <h4>Email</h4>
+          <p>carlos@fabreseventos.cl</p>
           <p>contacto@fabreseventos.cl</p>
+          <p>gerencia@fabreseventos.cl</p>
         </div>
         <div class="contact-card">
           <i class="fa-solid fa-phone"></i>
           <h4>Teléfono</h4>
-          <p>+56 9 1234 5678</p>
+          <p>+56 9 4261 3819</p>
         </div>
         <div class="contact-card">
           <i class="fa-solid fa-location-dot"></i>
-          <h4>Oficina Base</h4>
-          <p>Santiago, Chile (Cobertura Nacional)</p>
+          <h4>Dirección</h4>
+          <p>Hernando de Aguirre 128, Oficina 904, Providencia</p>
         </div>
       </div>
     </section>
@@ -616,12 +604,12 @@
     </div>
 
     <script>
-      // --- 1. GENERADOR DE 70 IMÁGENES LOCALES ---
+      // --- 1. GENERADOR DE 32 IMÁGENES LOCALES ---
       const galleryContainer = document.getElementById("gallery-container");
       const categories = ["corporativo", "masivo", "social"];
 
-      // Este ciclo va del 1 al 30 y busca las imágenes en tu carpeta "imagenes"
-      for (let i = 1; i <= 30; i++) {
+      // Este ciclo va del 1 al 31 y busca las imágenes en tu carpeta "imagenes"
+      for (let i = 1; i <= 31; i++) {
         const category = categories[i % 3]; // Asigna categorías al azar para los filtros
 
         // RUTA DE TU IMAGEN LOCAL (Ej: imagenes/1.jpg)
